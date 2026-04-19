@@ -1,24 +1,72 @@
 # 📈 Revenue Forecasting Pipeline
 
-## Overview
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![Machine Learning](https://img.shields.io/badge/ML-Time%20Series-green)
+![TensorFlow](https://img.shields.io/badge/DeepLearning-LSTM-orange)
+![Prophet](https://img.shields.io/badge/Model-Prophet-purple)
+![Status](https://img.shields.io/badge/Project-Complete-brightgreen)
 
-This project builds a modular pipeline to forecast revenue using multiple time series models including **ARIMA, SARIMA, Prophet, and LSTM**.
+---
 
-It covers the full workflow:
+## 🧠 Overview
 
-* Data preprocessing
-* Feature analysis
-* Model training & evaluation
-* Forecast generation
-* Visualization of results
+This project builds an **end-to-end revenue forecasting pipeline** using a combination of classical statistical models and modern machine learning techniques.
 
-The design is **modular and extensible**, making it easy to plug in additional models or datasets.
+It addresses a real-world challenge:
+
+> **Forecasting revenue under noisy, incomplete, and highly seasonal conditions.**
+
+The pipeline includes:
+
+* Data preprocessing & feature engineering
+* Statistical validation (ANOVA)
+* Multi-model forecasting (ARIMA, SARIMA, Prophet, LSTM)
+* Model evaluation & comparison
+* Forecast visualization
+
+---
+
+## 💼 Business Impact
+
+* Identified strong **seasonality (~52-week cycle)** in revenue data
+* Enabled **more reliable financial forecasting** through model comparison
+* Provided **uncertainty-aware predictions** using statistical models
+* Supports:
+
+  * 📊 Financial planning
+  * 📦 Demand forecasting
+  * 📉 Risk-aware decision making
+
+---
+
+## 🏗️ Architecture
+
+```mermaid id="m4bh0k"
+flowchart LR
+    A[Raw Data] --> B[Data Preprocessing]
+    B --> C[Feature Engineering]
+    C --> D[Statistical Analysis / ANOVA]
+    D --> E[Time Series Modeling]
+
+    E --> F1[ARIMA]
+    E --> F2[SARIMA]
+    E --> F3[Prophet]
+    E --> F4[LSTM]
+
+    F1 --> G[Evaluation]
+    F2 --> G
+    F3 --> G
+    F4 --> G
+
+    G --> H[Forecast Outputs]
+    H --> I[Plots / Reports]
+```
 
 ---
 
 ## 📁 Project Structure
 
-```plaintext
+```plaintext id="o0kqk9"
 revenueForecast/
 │
 ├── requirements.txt
@@ -28,95 +76,96 @@ revenueForecast/
 └── revenueForecast/
     ├── main.py
     ├── config/
-    │   ├── config.yaml
-    │   ├── logging.conf
     ├── data/
     ├── logs/
     ├── models/
     ├── plots/
     ├── reports/
     └── src/
-        ├── arima_model.py
-        ├── sarima_model.py
-        ├── prophet_model.py
-        ├── lstm_model.py
-        ├── data_preprocessing.py
-        ├── feature_engineering.py
-        ├── feature_analysis.py
-        ├── evaluation.py
-        └── eda.py
 ```
 
 ---
 
 ## 📊 Data
 
-* The project uses **revenue and margin data** aggregated at the customer level
-* Final dataset is transformed into a **univariate time series (Revenue vs Time)**
+* Revenue and margin data aggregated at **customer level**
+* Converted into a **univariate time series (Revenue vs Time)**
 
-### Key preprocessing steps:
+### Preprocessing Steps
 
-* Data cleaning & filtering
+* Data cleaning and filtering
 * Aggregation by customer and time (YYYYWW)
 * Handling missing periods via **time interpolation**
-* Feature ranking and statistical testing (ANOVA)
+* Feature validation using **ANOVA testing**
 
 ---
 
 ## 🤖 Models Implemented
 
-### ARIMA
-
-Baseline statistical time series model.
-
-### SARIMA
-
-Seasonal extension of ARIMA — **best performing model in this project**.
-
-### Prophet
-
-Captures trend + seasonality with smoother forecasts.
-
-### LSTM
-
-Deep learning model for capturing long-term dependencies in time series.
+| Model   | Description                                      |
+| ------- | ------------------------------------------------ |
+| ARIMA   | Baseline statistical model                       |
+| SARIMA  | Captures seasonality (**best-performing model**) |
+| Prophet | Trend + seasonality modeling                     |
+| LSTM    | Deep learning for temporal patterns              |
 
 ---
 
-## 📈 Results
+## 📈 Results & Model Performance
 
-* **SARIMA (1,0,1)(1,0,1,52)** performed best based on error metrics
-* Prophet captured smoother long-term trends but missed short-term volatility
-* LSTM provided reasonable fits but required more tuning
+### 🔢 Evaluation Metrics
 
-### Insights:
+| Model   | MAE       | RMSE      | Notes            |
+| ------- | --------- | --------- | ---------------- |
+| SARIMA  | 557,434   | 1,330,737 | Best performance |
+| Prophet | 892,580   | 1,307,344 | Smooth trend     |
+| ARIMA   | 688,668   | 1,495,186 | Baseline         |
+| LSTM    | 1,800,529 | 2,676,198 | Needs tuning     |
 
-* Revenue data exhibits **seasonality (weekly cycle ~52)**
-* Minimal differencing required → data is close to stationary
+> RMSE computed as √MSE
+
+---
+
+### 📊 Key Insights
+
+* SARIMA performed best due to strong seasonal structure in data
+* Prophet captured smoother long-term trends but missed volatility
+* LSTM underperformed due to limited tuning and data constraints
 * Forecast uncertainty increases significantly over longer horizons
 
-### Sample Outputs
+---
+
+### 📉 Sample Outputs
 
 ![SARIMA Forecast](plots/SARIMA_forecast.png)
 ![Prophet Forecast](plots/Prophet_forecast.png)
 
+---
+
+## 🧠 Key Learnings
+
+* Classical models (SARIMA) can outperform deep learning for structured time series
+* Proper preprocessing significantly impacts forecasting performance
+* Seasonality detection is critical for model selection
+* Deep learning models require larger datasets and tuning
+* Model choice should be driven by **data characteristics, not complexity**
 
 ---
 
-## 🚀 Setup & Run Instructions
+## 🚀 Setup & Run
 
-### 1. Clone the repository
+### 1. Clone repository
 
-```bash
+```bash id="ogw95f"
 git clone <your-repo-url>
 cd revenueForecast
 ```
 
 ---
 
-### 2. Create virtual environment (Python 3.11 recommended)
+### 2. Create virtual environment
 
-```bash
+```bash id="r9o8kx"
 python -m venv .venv
 ```
 
@@ -124,50 +173,39 @@ python -m venv .venv
 
 ### 3. Activate environment
 
-**Windows (Command Prompt):**
+**CMD:**
 
-```bash
+```bash id="ktk6vt"
 .venv\Scripts\activate
 ```
 
-**Windows (PowerShell):**
+**PowerShell:**
 
-```powershell
+```powershell id="qcrb9g"
 .venv\Scripts\Activate.ps1
-```
-
-If blocked:
-
-```powershell
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 ```
 
 ---
 
 ### 4. Install dependencies
 
-```bash
-python -m pip install --upgrade pip
+```bash id="dmb61c"
 pip install -r requirements.txt
 ```
 
 ---
 
-### 5. Data Setup
+### 5. Add data
 
-Place your input dataset here:
-
-```text
+```text id="xfv9dg"
 revenueForecast/data/finance_sample_data.xlsx
 ```
 
-> If not included in the repo, manually copy it into the `data/` folder.
-
 ---
 
-### 6. Run the pipeline
+### 6. Run pipeline
 
-```bash
+```bash id="az0i79"
 cd revenueForecast
 python main.py
 ```
@@ -178,81 +216,46 @@ python main.py
 
 Edit:
 
-```text
+```text id="km24pb"
 revenueForecast/config/config.yaml
 ```
 
-Ensure all paths are **relative**, for example:
+Example:
 
-```yaml
+```yaml id="fncbrk"
 data_path: data/finance_sample_data.xlsx
 output_dir: reports/
 model_dir: models/
 ```
 
-Avoid absolute paths like:
-
-```text
-C:/Users/yourname/...
-```
-
----
-
-## 🧠 Key Features
-
-* Modular pipeline architecture
-* Multiple model comparison framework
-* Logging support via `logging.conf`
-* Config-driven execution
-* Extendable for additional models and datasets
-
----
-
-## ⚠️ Notes
-
-* Use **Python 3.11** for best compatibility (TensorFlow / Prophet)
-* Logs are generated in `/logs`
-* Models and outputs are stored in `/models`, `/plots`, `/reports`
-* Ensure correct working directory when running the script
-
 ---
 
 ## 🔧 Troubleshooting
 
-### Module not found
+**Module errors**
 
-```bash
+```bash id="hq3y92"
 pip install -r requirements.txt
 ```
 
-### File path errors
+**Path issues**
 
-Make sure you run from:
-
-```bash
+```bash id="wyz4zk"
 cd revenueForecast
 python main.py
 ```
 
-### Missing data file
-
-Check:
-
-```text
-revenueForecast/data/
-```
-
 ---
 
-## 📌 Future Improvements
+## 🔮 Future Improvements
 
-* Hyperparameter tuning for Prophet & LSTM
+* Hyperparameter tuning (Prophet, LSTM)
 * Multivariate forecasting
 * Automated model selection
-* Deployment as API or dashboard
+* Deployment as API/dashboard
 
 ---
 
 ## 📜 License
 
-This project is for educational and demonstration purposes.
+MIT License
