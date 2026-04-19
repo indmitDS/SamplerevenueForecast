@@ -97,8 +97,8 @@ Deep learning model for capturing long-term dependencies in time series.
 
 ### Sample Outputs
 
-![SARIMA Forecast](revenueForecast/revenueForecast/plots/SARIMA_forecast.png)
-![Prophet Forecast](revenueForecast/revenueForecast/plots/Prophet_forecast.png)
+![SARIMA Forecast](plots/SARIMA_forecast.png)
+![Prophet Forecast](plots/Prophet_forecast.png)
 
 
 ---
