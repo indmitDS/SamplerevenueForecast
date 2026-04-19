@@ -1,0 +1,15 @@
+pandas
+numpy
+scipy
+pyyaml
+matplotlib
+scikit-learn
+statsmodels
+prophet
+xgboost
+lazypredict
+tensorflow
+plotly
+openpyxl
+seaborn
+pmdarima

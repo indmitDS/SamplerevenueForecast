@@ -1,0 +1,3 @@
+Model: SARIMA
+Mean Squared Error: 1770839989883.0217
+Mean Absolute Error: 557434.0233176032

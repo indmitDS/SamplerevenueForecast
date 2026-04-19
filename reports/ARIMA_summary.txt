@@ -1,0 +1,3 @@
+Model: ARIMA
+Mean Squared Error: 2234560076758.98
+Mean Absolute Error: 688668.0542605373

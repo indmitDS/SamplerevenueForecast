@@ -1,0 +1,50 @@
+Project Structure /
+
+revenueForecast/
+│
+├── requirements.txt
+├── README.md
+├── .gitignore
+│
+└── revenueForecast/
+    ├── main.py
+    ├── config/
+    │   ├── config.yaml
+    │   ├── logging.conf
+    ├── data/
+    ├── logs/
+    ├── models/
+    ├── plots/
+    ├── reports/
+    └── src/
+
+
+Instructions: 
+
+(Please do it in VSCode or any IDE of your choice) 
+
+
+1. Clone the repository
+git clone <your-repo-url>
+cd revenueForecast
+2. Create a virtual environment (Python 3.11+)
+python -m venv .venv
+3. Activate the environment
+Windows (Command Prompt)
+.venv\Scripts\activate
+Windows (PowerShell)
+.venv\Scripts\Activate.ps1
+
+If blocked:
+
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+4. Install dependencies
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+5. Data setup
+
+Place your input file here:
+
+revenueForecast/data/finance_sample_data.xlsx
+
+If not included in repo, manually copy it into the data/ folder.

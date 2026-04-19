@@ -1,0 +1,45 @@
+# Virtual environment
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+*.db
+*.sqlite3
+
+# Environment files
+.env
+
+# Temporary files
+*.tmp
+*.bak
+
+# Compiled files 
+*.pyc
+*.pyo
+*.pyd
+
+# Large generated outputs
+##reports/
+###plots/
+###models/

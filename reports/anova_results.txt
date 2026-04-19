@@ -1,0 +1,4 @@
+ANOVA Results:
+F-statistic: 2.5544297554965616
+p-value: 3.283877297577072e-10
+Conclusion: The effect of CUSTOMER_NO on TOTAL_REVENUE_USD is statistically significant.

@@ -1,0 +1,3 @@
+Model: Prophet
+Mean Squared Error: 1709102657432.9502
+Mean Absolute Error: 892580.1813119836

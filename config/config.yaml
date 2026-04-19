@@ -1,0 +1,32 @@
+data:
+  input_file: 'data/finance_sample_data.xlsx'
+  sheet_name: 'Sheet2'
+  date_column: 'FISCAL_WEEK_MODIFIED_CREATE_DATE'
+  target_column: 'TOTAL_REVENUE_USD'
+  customer_column: 'CUSTOMER_NO'
+  fiscal_year_column: 'FISCAL_YEAR'
+  fiscal_week_column: 'FISCAL_WEEK_IN_QUARTER'
+  lag_features: [1, 2, 3]
+  rolling_windows: [3, 5]
+  columns_to_drop:  'TOTAL_MARGIN_USD'
+  filter_conditions:
+    FINANCIAL_SITE_NAME: 'SITE1'
+    ENTERPRISE_DESCRIPTION: 'ES1'
+    CBT_TEAM: 'CBT1'
+    MPM_PRODUCT_TYPE_DESCRIPTION: 'MPM1'
+
+modeling:
+  train_test_split: 0.8
+  models: ['ARIMA', 'Prophet', 'XGBoost', 'AutoML']
+
+forecast:
+  forecast_periods: 80
+
+paths:
+  models: 'models/'
+  plots: 'plots/'
+  results: 'reports/'
+  config_file: 'config/config.yaml'
+  logs: 'logs/'
+  eda: 'reports/eda/'
+  residuals: 'reports/residuals/'

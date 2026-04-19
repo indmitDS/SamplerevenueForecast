@@ -1,0 +1,3 @@
+Model: LSTM
+Mean Squared Error: 7157143869190.33
+Mean Absolute Error: 1800528.5771019896
